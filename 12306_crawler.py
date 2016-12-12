@@ -22,7 +22,7 @@ def print_data(start,end,date,purpose_code):
     """
     提交查询，打印结果
     """
-    query = "https://kyfw.12306.cn/otn/leftTicket/query?leftTicketDTO.train_date="+date+\
+    query = "https://kyfw.12306.cn/otn/leftTicket/queryX?leftTicketDTO.train_date="+date+\
     "&leftTicketDTO.from_station="+start+\
     "&leftTicketDTO.to_station="+end+"&purpose_codes="+purpose_codes[purpose_code]
     html = urllib.request.urlopen(query)
