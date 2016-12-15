@@ -22,14 +22,13 @@ def print_data(start,end,date,purpose_code):
     """
     提交查询，打印结果
     """
-    query = "https://kyfw.12306.cn/otn/leftTicket/queryX?leftTicketDTO.train_date="+date+\
-    "&leftTicketDTO.from_station="+start+\
-    "&leftTicketDTO.to_station="+end+"&purpose_codes="+purpose_codes[purpose_code]
+    query = "https://kyfw.12306.cn/otn/lcxxcx/query?purpose_codes="+purpose_codes[purpose_code]+\
+    "&queryDate="+date+"&from_station="+start+"&to_station="+end
     html = urllib.request.urlopen(query)
-    trains = json.loads(html.read().decode("utf-8"))["data"]
+    trains = json.loads(html.read().decode("utf-8"))["data"]["datas"]
     for train in trains:
         for key in keys:
-            print(results[key]+":"+train["queryLeftNewDTO"][key],end="\t")
+            print(results[key]+":"+train[key],end="\t")
         print("\n")
 
 def start_query():
